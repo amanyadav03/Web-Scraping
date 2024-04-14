@@ -1,5 +1,11 @@
-
-        // Function to download the fetched data as a text file
+        document.addEventListener('DOMContentLoaded', function(){
+            const togglebutton = document.querySelector('.toggle-button');
+            const navbar= document.getElementById('navbar');
+            togglebutton.addEventListener('click',function(){
+                navbar.classList.togglebutton('active');
+            });
+        });
+// Function to download the fetched data as a text file
 function downloadData() {
   const resultElement = document.getElementById("result");
   const downloadLink = document.createElement("a");
