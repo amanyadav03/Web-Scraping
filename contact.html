@@ -9,11 +9,12 @@
 <body>
 
     <header class="header">
-        <a href="#" class="logo"><img src="pics/logo.png" alt="logo"></a>
+        <a href="home.html" class="logo"><img src="pics/logo.png" alt="logo"></a>
+        
         <div class="spider-thread"></div>
         <div class="spider"></div>
         <div class="thread"></div>
-        <button class="toggle-button">&#9776;</button>
+        <button class="toggle-button" id="toggle-button">&#9776;</button>
         <nav class="navbar" id ="navbar">
             <a href="home.html">Home</a><a href="contact.html">Contact Us</a><a href="about.html">About</a>
         </nav>
@@ -34,7 +35,7 @@
                     <input type="email" id="email" name="email" required>
 
                     <label for="message">Message:</label>
-                    <textarea id="message" name="message" rows="4" required></textarea>
+                    <textarea id="message" name="message" rows="4" required placeholder="leave a meassage"></textarea>
 
                     <button class="btn btn-primary" type="submit">Send Message</button>
                 </form>
@@ -52,7 +53,15 @@
               </div>
             <p>&copy; 2024 Data Crawler. All rights reserved.</p>
         </div>
-    </div
-
-</body>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            const togglebutton = document.getElementById('toggle-button');
+            const navbar= document.getElementById('navbar');
+            togglebutton.addEventListener('click',function(){
+                navbar.classList.toggle('active');
+            });
+        });
+    </script>
+    </body>
 </html>
