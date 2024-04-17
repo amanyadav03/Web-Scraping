@@ -7,30 +7,68 @@
     <link rel="stylesheet" href="homestyle.css">
 </head>
 <body>
+    <div class="teader">
+        <!--Content before waves-->
+        <div class="inner-header flex">
+          <h1>Data Crawler</h1>
+        </div>
+  
+        <!--Waves Container-->
+        <div>
+          <svg
+            class="waves"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            viewBox="0 24 150 28"
+            preserveAspectRatio="none"
+            shape-rendering="auto"
+          >
+            <defs>
+              <path
+                id="gentle-wave"
+                d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
+              />
+            </defs>
+            <g class="parallax">
+              <use
+                xlink:href="#gentle-wave"
+                x="48"
+                y="0"
+                fill="rgba(255,255,255,0.7")
+              />
+              <use
+                xlink:href="#gentle-wave"
+                x="48"
+                y="3"
+                fill="rgba(255,255,255,0.5)"
+              />
+              <use
+                xlink:href="#gentle-wave"
+                x="48"
+                y="5"
+                fill="rgba(255,255,255,0.3)"
+              />
+              <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+            </g>
+          </svg>
+        </div>
+        <!--Waves end-->
+      </div>
+      <!--Header ends-->
+  
     <header class="header">
         <a href="#" class="logo"><img src="pics/logo.png" alt="logo"></a>
         <div class="spider-thread"></div>
         <div class="spider"></div>
         <div class="thread"></div>
-        <button class="toggle-button">&#9776;</button>
+        <button class="toggle-button" id="toggle-button">&#9776;</button>
         <nav class="navbar" id ="navbar">
             <a href="home.html">Home</a><a href="contact.html">Contact Us</a><a href="about.html">About</a>
         </nav>
         
     </header>
     <section class="main">
-        <div class="topic">
-            <div class="video-container">
-                <video  muted loop>
-                 <source src="pics/video (2160p).mp4">
-                </video>
-
-            </div>
-            <div class="topic-text">
-                DATA CRAWLER
-                
-            </div>
-            </div>
+        
 
     </section>
     <main>
@@ -44,12 +82,19 @@
               <div class="mainfunc">
                 <div class="search-box">
                     <input type="text" id="url-area" placeholder="Enter URL to scrape">
-                    <button type="submit" id="scrape-button" class="btn-primary"><img src="pics/search.png" alt="scrape"></button>
+                </div>
+                <div class="search-box">
 
+                    <input type="text" id="content-type" placeholder="type (e.g, titles, paragraphs..)">
+                </div>
+                <div class="down-load">
+                    <button type="submit" id="search-button" class="btn-primary">Scrape</button>
+                    
                 </div>
                 <textarea id="result" cols="50" rows="13"></textarea>
                 <div class="down-load">
-                    <button id="down" class="btn-primary">Download File</button>
+                    
+                    <button class="btn-primary" id="download-text">Download</button>
                 </div>
             </div>
         </div>
