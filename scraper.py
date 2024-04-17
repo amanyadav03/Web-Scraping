@@ -12,6 +12,7 @@ CORS(app, allow_headers=['Content-Type'], origins=['http://127.0.0.1:5501', 'htt
 def scrape_data():
     try:
         url = request.args.get('url')
+        content_type= request.args.get('content_type')
         if not url:
             return Response(
                 response=json.dumps({'error': 'URL parameter is missing'}),
@@ -31,8 +32,23 @@ def scrape_data():
 
         try:
             soup = BeautifulSoup(response.content, "html.parser")
-            data = {'html_content': str(soup)}
-
+            if content_type == 'text':
+                data = {"text_content": soup.get_text()}
+            elif content_type == 'titles' or content_type == 'headings':
+                titles = [title.text for title in soup.find_all(['h1', 'h2', 'h3', 'h4', 'h5', 'h6'])]
+                data = {"titles": titles}
+            elif content_type == 'paragraphs':
+                paragraphs = [paragraph.text for paragraph in soup.find_all('p')]
+                data = {"paragraphs": paragraphs}
+            elif content_type == 'html':
+                data = {"html_content": str(soup)}
+            else:
+                # If content type is not recognized, return an error
+                return Response(
+                    response=json.dumps({'error': 'Invalid content type'}),
+                    status=400,
+                    mimetype='application/json')
+            
             response = Response(
                 response=json.dumps(data),
                 status=200,
